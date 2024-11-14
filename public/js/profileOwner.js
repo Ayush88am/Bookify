@@ -1,0 +1,150 @@
+document.addEventListener("DOMContentLoaded", () => {
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  const token = getCookie("token");
+  if (!token) {
+    window.location.pathname = '/login';
+  }
+
+  const modal = document.querySelector('.modal');
+  const updateModal = document.querySelector('.update-info-modal');
+  const backgroundOverlay = document.createElement('div');
+  backgroundOverlay.classList.add('background-overlay');
+  document.body.appendChild(backgroundOverlay);
+
+  // Close Modals
+  function closeModals() {
+    modal.classList.remove('active');
+    updateModal.classList.remove('active');
+    backgroundOverlay.classList.remove('active');
+  }
+
+  // Function to show image overlay
+  function showImageOverlay(imageUrl) {
+    let overlay = document.querySelector(".image-overlay");
+
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = "image-overlay";
+      overlay.innerHTML = `
+      <span class="close-image" id="close-image-now">&times;</span>
+      <img class="overlay-image" src="${imageUrl}" alt="Enlarged View">`;
+      document.body.appendChild(overlay);
+
+      // Close overlay when clicking the close button or outside the image
+      overlay.querySelector("#close-image-now").addEventListener("click", hideOverlay);
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) hideOverlay();
+      });
+    }
+
+    overlay.querySelector(".overlay-image").src = imageUrl;
+    overlay.style.display = "flex"; // Show the overlay
+  }
+
+  // Function to hide the overlay
+  function hideOverlay() {
+    const overlay = document.querySelector(".image-overlay");
+    if (overlay) {
+      overlay.style.display = "none"; // Hide the overlay
+    }
+  }
+
+  // Fetch user profile data and populate profile
+  const getUserProfile = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/userProfileOwner');
+      const user = await response.json();
+
+      if (response.ok) {
+        // Populate Profile Details
+        const profileDetailsHTML = `
+          <div class="profile-img"></div>
+          <div class="profile-info">
+            <h2>${[user.firstname, user.middlename, user.lastname].filter(Boolean).join(' ')}</h2>
+            <span class="user-bio"><h2>Bio:</h2><h3>${user.bio || '#NO-BIO'}</h3></span>
+            <button class="edit-button open-modal-btn">Edit Profile</button>
+          </div>
+        `;
+        document.querySelector(".profile-details").innerHTML = profileDetailsHTML;
+
+        // Set Profile Image
+        const profileImg = document.querySelector(".profile-img");
+        if (user.userProfilePicture) {
+          profileImg.style.backgroundImage = `url('${user.userProfilePicture}')`;
+          profileImg.style.backgroundSize = 'cover';
+          profileImg.style.backgroundPosition = 'center';
+
+          // Add image click event to show overlay
+          profileImg.addEventListener("click", () => {
+            showImageOverlay(user.userProfilePicture);
+          });
+        }
+
+        // Populate Contact Information
+        const contactInfoHTML = `
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>${user.email || 'Email not provided'}</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>${user.number || '#NO-NUMBER'}</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>${user.address || '#NO-ADDRESS'}</span>
+          </div>
+          <button class="update-button open-update-modal-btn">
+            <i class="fas fa-plus"></i> Update Information
+          </button>
+          <button class="upload-book-button">
+            <i class="fas fa-upload"></i> Upload a Book
+          </button>
+        `;
+        document.querySelector(".contact-details").innerHTML = contactInfoHTML;
+
+        // Re-assign event listeners to dynamically added buttons
+        document.querySelector('.edit-button.open-modal-btn').addEventListener('click', () => {
+          modal.classList.add('active');
+          backgroundOverlay.classList.add('active');
+        });
+        document.querySelector(".upload-book-button").addEventListener("click", () => {
+          window.location.pathname = "/uploadBook";
+        });
+        document.querySelector('.update-button.open-update-modal-btn').addEventListener('click', () => {
+          updateModal.classList.add('active');
+          backgroundOverlay.classList.add('active');
+        });
+      } else {
+        console.error('Error fetching profile data:', user.message);
+      }
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    }
+  };
+
+  getUserProfile();
+  document.querySelector(".go-back").addEventListener("click", () => {
+    window.location.pathname = "/home";
+  });
+
+  // Close Modals when clicking on the background overlay or close buttons
+  document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', closeModals);
+  });
+  backgroundOverlay.addEventListener('click', closeModals);
+
+  // "Go Back" button clears user session or cookies (if needed)
+  document.querySelector(".go-back").addEventListener('click', () => {
+    clearCookie('user_id');
+  });
+});
+
+// Optional helper function to clear cookies (placeholder)
+function clearCookie(cookieName) {
+  document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}

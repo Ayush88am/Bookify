@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/homeNav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+  <div id="notification" class="notification">
+  <h2 id="notification-message"></h2>
+</div>
+    <header class="navbar">
+        <div class="logo">BooKiFy</div>
+
+        <div class="search-container">
+            <div class="custom-select-container">
+                <select class="custom-select">
+                    <option value="User" id="user" selected>User</option>
+                    <option value="Book" id="book">Book</option>
+                </select>
+            </div>
+            <input type="text" class="search-input" placeholder="Search...">
+            
+        </div>
+        <span class="toggle-search"><i class="fa-solid fa-magnifying-glass 
+        sm-screen"></i>
+        <p>Search</p>
+        </span>
+        <div class="profile-dropdown">
+
+            <div class="profile-icon" >
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <button id="see-profile">View Profile</button>
+                <button id="upload-book">Upload book</button>
+                <a id="logout-user" >Logout</a>
+            </div>
+        </div>
+        <span class="nav-go-back-icon hide" >
+    <i class="fas fa-arrow-left" style="font-size: 18px; color: #000000;"> Go Back</i>
+</span>
+    </header>
+  <div class="search-items-container  hide"> 
+<div class="searching-items ">
+  <h5>ENTER SOMETHING FOR SEARCH 🔎</h5>
+    </div>
+  </div>
+    <div class="container">
+      <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="80%">BooKiFy</text>
+        </symbol>
+    
+        <g class = "g-ants">
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+      </svg>
+    </div>
+
+<div class="carousel-container">
+  <button class="carousel-arrow left-arrow">&#9664;</button>
+  
+  <div class="carousel" id="bookes-all">
+  </div>
+
+
+  <button class="carousel-arrow right-arrow" >&#9654;</button>
+</div>
+
+<div class="bookPop">
+
+</div>
+<div class="card-grid">
+   
+    </div>
+  </div>
+<div class="carousel-container">
+  <button class="carousel-arrow left-arrow" id="leftSw"><i class="fas fa-chevron-left"></i></button>
+  <div class="carousel" id="users-all">
+   
+  </div>
+  <button class="carousel-arrow right-arrow" id="rightSw"><i class="fas fa-chevron-right"></i></button>
+</div>
+<div class="container-bottom-element bookPop " id="bottom-trass">
+
+</div>
+<footer style="background: linear-gradient(145deg, rgba(0, 0, 255, 0.624), #ff9a8b93); color: #fff; padding: 40px 20px; text-align: center; position: relative; font-family: 'Arial', sans-serif; margin-top: 13rem; border-top: 2px solid wheat; ">
+  <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <!-- Follow Us Section -->
+    <div class="footer-social" style="margin-bottom: 30px;">
+      <h3 style="font-size: 30px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; color: rgba(250, 249, 215, 0.835);">Follow Us</h3>
+      <div class="social-icons" style="font-size: 35px; margin-top: 10px;">
+        <a href="https://facebook.com" target="_blank" style="color: #ffffff9c; margin: 0 15px; text-decoration: none; transition: transform 0.3s ease;">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" style="color: #ffffff8c; margin: 0 15px; text-decoration: none; transition: transform 0.3s ease;">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" style="color: #ffffff93; margin: 0 15px; text-decoration: none; transition: transform 0.3s ease;">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" style="color: #ffffff89; margin: 0 15px; text-decoration: none; transition: transform 0.3s ease;">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Links Section -->
+    <div class="footer-links" style="margin-bottom: 30px; cursor: pointer; font-size: 18px; font-weight: 500; ">
+      <a href="/about" style="color: #fff; margin: 0 15px; transition: color 0.3s ease;">About Us</a>
+      <a href="/privacy-policy" style="color: #fff; text-decoration: none; margin: 0 15px; transition: color 0.3s ease;">Privacy Policy</a>
+      <a href="/terms" style="color: #fff; text-decoration: none; margin: 0 15px; transition: color 0.3s ease;">Terms of Service</a>
+      <a href="/contact" style="color: #fff;  margin: 0 15px; transition: color 0.3s ease;">Contact</a>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom" style="border-top: 1px dotted #e6e616b7; padding-top: 20px; font-size: 16px; font-weight: 300;">
+      <p>&copy; 2024 BooKiFy. All Rights Reserved.</p>
+    </div>
+  </div>
+
+  <!-- Background Animation (Optional) -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.1); animation: moveBackground 6s infinite linear;"></div>
+</footer>
+
+    <script src="./js/homeNav.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>

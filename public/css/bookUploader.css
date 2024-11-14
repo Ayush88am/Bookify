@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: black;
+  background-position: center;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 20px;
+}
+
+.main {
+  background-color: black;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(237, 84, 84, 0.433);
+  margin-top: 40px;
+  color:white;
+  margin-bottom: 40px;
+
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
+}
+
+li {
+  text-align: center;
+  position: relative;
+  width: 100px;
+}
+
+.icons {
+  font-size: 24px;
+  color: #8e44ad;
+  margin-bottom: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.step {
+  width: 50px;
+  height: 50px;
+  background-color: #8e44ad;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  
+  font-size: 20px;
+  position: relative;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.step .awesome {
+  font-size: 16px;
+  color: #fff;
+  display: none;
+}
+
+.step.complete .awesome {
+  display: block;
+}
+
+.step.complete p {
+  display: none;
+}
+
+.content {
+  background-color: black;
+  opacity: 0.9;
+  padding: 1.5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  border: 2px solid white;
+  border-radius: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 60px;
+  color:white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+form label {
+  font-weight: 600;
+}
+
+form input, textarea {
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  outline: none;
+  width: 100%;
+  border: 1px solid black;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  border: 2px solid #ccc;
+  background-color: black;
+  color: white;
+}
+
+form input:focus, textarea:focus {
+  border-color: #1e90ff;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+}
+
+.sub-btn {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: blue;
+  box-shadow: 0 2px 4px rgba(34, 0, 144, 0.1);
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+}
+
+.sub-btn:hover {
+  background-color: #1e90ff;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .sub-btn {
+    padding: 0.5rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  form input,
+  textarea {
+    width: 100%;
+  }
+}
+.hide{
+  display: none;
+}
+.notification {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white; /* Green background for success */
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: top 0.5s ease-out;
+  z-index: 1000;
+  opacity: 0;
+  font-size: 10px;
+  padding: 0.7rem;
+  width: 10rem;
+  height: fit-content;
+}
+
+.notification.show {
+  top: 20px; /* Position it on the screen */
+  opacity: 1;
+}

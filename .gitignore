@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS-specific files (macOS)
+.DS_Store
+
+# Vercel config build files
+.vercel/
+dist/
+
+# Debugging
+.vscode/
+.idea/
+
+# Miscellaneous
+public/css/*.map
+public/js/*.map

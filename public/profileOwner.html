@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/profileOwner.css">
+</head>
+<body>
+  <div id="notification" class="notification">
+  <h2 id="notification-message"></h2>
+</div>
+<button class="go-back"  style="margin: 5rem; border: none; padding: 0.8rem; margin-bottom: 0; cursor: pointer;">
+  <i class="fas fa-arrow-left" style="font-size: 18px; color: #000000;"> Go Back</i>
+</button>
+  <div class="container">
+    <div class="top">
+    </div>
+    <div class="profile-details">
+</div>
+    <div class="profile-addition-information">
+      <div class="contact-details profile-info">
+        
+        
+        
+        
+      </div>
+    </div>
+    
+    <!-- Edit Profile Modal -->
+    <div class="modal">
+      <span class="close-modal">&times;</span>
+      <div class="modal-content">
+        <h2>Update Profile</h2>
+        <h4>Update one or more</h4>
+        <form id="form">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="user" placeholder="Enter new username">
+          
+          <label for="bio">Bio</label>
+          <textarea id="bio" placeholder="Update your bio" name="bio" maxlength="60"></textarea>
+          
+          <label for="image-upload">Upload Image</label>
+          <input type="file" name="profileImage" id="image-upload" ">
+          
+          <button type="submit" class="save-btn" id="edit-profile-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Update Information Modal -->
+    <div class="modal update-info-modal">
+      <span class="close-modal">&times;</span>
+      <div class="modal-content">
+        <h2>Update Information</h2>
+        <h4>Change your contact details</h4>
+        <form>
+          <label for="phone">Mobile Number</label>
+          <input type="text" id="phone" name="phone" placeholder="Enter your new mobile number">
+          
+          <label for="address">Address</label>
+          <textarea id="address" name="address" placeholder="Enter your new address"></textarea>
+          
+          <button type="submit" class="save-btn" id="add-phone">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/profileOwner.js"></script>
+</body>
+</html>

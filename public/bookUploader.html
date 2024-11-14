@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bookUploader.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Upload a Book</title>
+</head>
+<body>
+    <div id="notification" class="notification">
+  <h2 id="notification-message"></h2>
+</div>
+    <button class="go-back"  style="margin: 5rem; border: none; padding: 0.8rem; margin-bottom: 0; cursor: pointer;">
+    <i class="fas fa-arrow-left" style="font-size: 18px; color: #000000;"> Go Back</i>
+  </button>
+    <div class="container">
+        <div class="main">
+            <ul>
+                <li>
+                    <i class="icons edit fa-solid fa-pen"></i>
+                    <div class="step first">
+                        <p>1</p>
+                        <i class="awesome fa-solid fa-check"></i>
+                    </div>
+                    <p class="label">Fill</p>
+                </li>
+                <li>
+                    <i class="icons upload fa-solid fa-upload"></i>
+                    <div class="step second">
+                        <p>2</p>
+                        <i class="awesome fa-solid fa-check"></i>
+                    </div>
+                    <p class="label">Upload</p>
+                </li>
+                <li>
+                    <i class="icons approval fa-solid fa-thumbs-up"></i>
+                    <div class="step third">
+                        <p>3</p>
+                        <i class="awesome fa-solid fa-check"></i>
+                    </div>
+                    <p class="label">Approval</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Book Details Section -->
+        <div class="bookDetailscontainer" id="cont-1">
+            <div class="content">
+                <h1>Book Details</h1>
+                <form id="bookInfo">
+                    <div class="form-group">
+                        <label for="BookTitle">Book Title:</label>
+                        <input type="text" name="BookTitle" id="BookTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookPrice">Book Price:</label>
+                        <input type="number" name="BookPrice" id="BookPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookType">Book Type:</label>
+                        <input type="text" name="BookType" id="BookType" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookAuthor">Book Author:</label>
+                        <input type="text" name="BookAuthor" id="BookAuthor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDescription">About book (short):</label>
+                        <textarea name="bookDescription" id="bookDescription" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="uploaderName">Your name:</label>
+                        <input type="text" name="uploaderName" id="uploaderName" required>
+                    </div>
+                    <button class="sub-btn" id="book-submit" type="submit">Submit</button>
+                </form>
+                <h4 id="validation-message"></h4>
+            </div>
+        </div>
+
+        <!-- File Upload or Paste Content Section -->
+        <div class="bookDetailscontainer" id="cont-2">
+            <div class="content">
+                <h1>Upload File <span style="color: red; font-size: x-large; font-weight: 900; text-decoration: underline;">OR</span> Paste Content</h1>
+                <form id="form-submit-data">
+                    <div class="form-group">
+                        <label for="bookPdfDocument">Select a file:</label>
+                        <input type="file" id="myfile" accept=".pdf" name="bookPdfDocument">
+                    </div>
+                    <div class="form-group">
+                        <h1 style="text-align: center; color: greenyellow; font-weight: 900;">OR</h1>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookContent">Book Content:</label>
+                        <textarea id="BookContent" name="BookContent" rows="4" cols="50" placeholder="Paste your book content here"></textarea>
+                    </div>
+                    <button class="sub-btn" id="upload-cont" type="submit">Upload</button>
+                </form>
+                <h4 id="file-validation-message"></h4>
+            </div>
+        </div>
+
+        <!-- Book Thumbnail Upload Section -->
+        <div class="bookDetailscontainer" id="cont-3">
+            <div class="content">
+                <h1>Upload Book Thumbnail</h1>
+                <form id="thumbnail-upload">
+                    <div class="form-group">
+                        <label for="profileImage">Select a file:</label>
+                        <input type="file" id="ThumbnailFile" name="profileImage" required >
+                    </div>
+                    <button class="sub-btn" id="thumbnail-sub" type="submit">Upload</button>
+                </form>
+                <h4 id="thumbnail-validation-message"></h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/bookUploader.js"></script>
+</body>
+</html>
