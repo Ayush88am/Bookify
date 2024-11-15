@@ -32,13 +32,12 @@ const userSignUp=async (req,res)=>{
         expiresIn: '1h'
     })
       // Set the token cookie with secure settings in production
-      res.cookie('token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-        sameSite: 'None', // Allows cross-site cookies
-        maxAge: 3600000,  // 1 hour
-        path: '/'
-      });
+      if (process.env.NODE_ENV === 'production') {
+        res.cookie('token', token, { httpOnly: false, sameSite: 'none', secure: true })
+      } else {
+        res.cookie('token', token, { httpOnly: false })
+      }
+
 
 
 
@@ -76,13 +75,11 @@ const userLogin=async(req,res)=>{
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
     // Set the token cookie with secure settings in production
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', 
-      sameSite: 'None', 
-      maxAge: 3600000,  
-      path: '/'
-    });
+    if (process.env.NODE_ENV === 'production') {
+        res.cookie('token', token, { httpOnly: false, sameSite: 'none', secure: true })
+    } else {
+        res.cookie('token', token, { httpOnly: false })
+    }
 
 
           return res.status(200).json({

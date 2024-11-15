@@ -37,7 +37,7 @@ const userRegister = () => {
       showNotification("red", "Password length should be atleast 5")
       return;
     }
-    const response = await fetch('https://bookify-l8ec.onrender.com/api/userLogin', {
+    const response = await fetch('http://localhost:3000/api/userLogin', {
       method: "POST",
       body: JSON.stringify({
         email,

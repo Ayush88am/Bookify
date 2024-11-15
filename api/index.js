@@ -32,10 +32,15 @@ mongoose.connect(process.env.MONGODB_URI);
 ----------- for Project --------------
 */
 app.use(cookieParser());
-app.use(cors({
-      origin: 'https://bookify-l8ec.onrender.com',  
-      credentials: true
-}));
+const corsOptions = {
+      origin: process.env.NODE_ENV === 'production'
+            ? 'https://bookify-l8ec.onrender.com'  // Your frontend's production URL
+            : 'http://127.0.0.1:5500',  // Your local frontend URL
+      credentials: true,  // Allow cookies
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
