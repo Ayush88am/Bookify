@@ -31,10 +31,15 @@ const userSignUp=async (req,res)=>{
       const token = jwt.sign({ userId: result._id }, process.env.SECRET_KEY, {
         expiresIn: '1h'
     })
+      // Set the token cookie with secure settings in production
       res.cookie('token', token, {
-        path: '/',        // Make the cookie accessible across all routes
-        sameSite: 'None'  // Allow cross-origin requests to send cookies
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        sameSite: 'None', // Allows cross-site cookies
+        maxAge: 3600000,  // 1 hour
+        path: '/'
       });
+
 
 
       return res.status(200).json({
@@ -70,13 +75,15 @@ const userLogin=async(req,res)=>{
         }
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
+    // Set the token cookie with secure settings in production
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true,
-      maxAge: 3600000,
-      path: '/',
-      sameSite: 'None'
+      secure: process.env.NODE_ENV === 'production', 
+      sameSite: 'None', 
+      maxAge: 3600000,  
+      path: '/'
     });
+
 
           return res.status(200).json({
             "result":"User Login Successfully",
