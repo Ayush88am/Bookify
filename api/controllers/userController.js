@@ -32,9 +32,10 @@ const userSignUp=async (req,res)=>{
         expiresIn: '1h'
       })
       res.cookie('token', token, {
-        httpOnly: false,
-        sameSite: 'None', // Cross-site cookies
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // Secure only in production
+        sameSite: 'None',
+        maxAge: 24 * 60 * 60 * 1000,
       });
 
  
@@ -72,10 +73,13 @@ const userLogin=async(req,res)=>{
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
     res.cookie('token', token, {
-      httpOnly: false,
-      sameSite: 'None', // Cross-site cookies
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Secure only in production
+      sameSite: 'None',
+      maxAge: 24 * 60 * 60 * 1000,
     });
+
+
           return res.status(200).json({
             "result":"User Login Successfully",
             "token":token

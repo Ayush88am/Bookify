@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const response = await fetch(`http://localhost:3000/api/getUser/profile/${id}`);
+    const response = await fetch(`https://bookify-l8ec.onrender.com/api/getUser/profile/${id}`);
     const item = await response.json();
 
     const htmlOfProfile = `

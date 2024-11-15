@@ -174,7 +174,8 @@ const handleBookThumbnail=()=>{
    
     const form = new FormData(bookThumbnailform);
     form.append("bookId", bookId);
-  try{  const response = await fetch("http://localhost:3000/api/uploadBookThumbnail",{
+    try {
+      const response = await fetch("https://bookify-l8ec.onrender.com/api/uploadBookThumbnail",{
       method:"POST",
       body:form,
       credentials:"include"

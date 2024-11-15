@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
   const randomNumber = (lengthOfArray) => Math.floor(Math.random() * lengthOfArray);
 
   const fetchBookData = async () => {
-    const response = await fetch("http://localhost:3000/api/findBooks");
+    const response = await fetch("https://bookify-l8ec.onrender.com/api/findBooks");
     const data = await response.json();
     if (!response.ok){
       showNotification("red", data.message)
@@ -144,7 +144,7 @@ window.addEventListener("load", () => {
   };
 
   const carouselUsers = async () => {
-    const response = await fetch("http://localhost:3000/api/findUsers");
+    const response = await fetch("https://bookify-l8ec.onrender.com/api/findUsers");
     const data = await response.json();
     if (!response.ok) {
       return showNotification("red", data.message)
@@ -209,7 +209,7 @@ window.addEventListener("load", () => {
       if (!item?.title || (!item?.bookPdfFileUrl && !item?.bookContent) || !item?.bookImageUrl) {
         try {
           if (item?._id) {  
-            const response = await fetch(`http://localhost:3000/api/deleteBook/${item._id}`, {
+            const response = await fetch(`https://bookify-l8ec.onrender.com/api/deleteBook/${item._id}`, {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json"

@@ -98,7 +98,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const selectId = selectedId();
       if (selectId === "book") {
         try {
-          const response = await fetch(`http://localhost:3000/api/searchBook?bookName=${e.target.value}`);
+          const response = await fetch(`https://bookify-l8ec.onrender.com/api/searchBook?bookName=${e.target.value}`);
           const data = await response.json();
 
           itemsArray = Array.isArray(data) ? data.map((item) => {
@@ -120,7 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       } else {
         try {
-          const response = await fetch(`http://localhost:3000/api/searchUser/profile?username=${e.target.value}`);
+          const response = await fetch(`https://bookify-l8ec.onrender.com/api/searchUser/profile?username=${e.target.value}`);
           const data = await response.json();
 
           itemsArray = Array.isArray(data) ? data.map((item) => {
@@ -163,12 +163,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   const profileSettings = async () => {
     const profileButton = document.querySelector(".profile-icon");
-    const response = await fetch("http://localhost:3000/api/userProfileOwner");
+    const response = await fetch("https://bookify-l8ec.onrender.com/api/userProfileOwner");
     const data = await response.json();
     profileButton.style.backgroundImage = `url('${data.userProfilePicture}')`;
 
     document.querySelector("#logout-user").addEventListener('click', async () => {
-      const response = await fetch("http://localhost:3000/api/user/logout");
+      const response = await fetch("https://bookify-l8ec.onrender.com/api/user/logout");
       await response.json();
       if (response.ok){
         showNotification("green","Logout successFully");

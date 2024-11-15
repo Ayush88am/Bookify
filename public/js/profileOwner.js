@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch user profile data and populate profile
   const getUserProfile = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/userProfileOwner');
+      const response = await fetch('https://bookify-l8ec.onrender.com/api/userProfileOwner');
       const user = await response.json();
 
       if (response.ok) {
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const phone = document.querySelector("#phone").value;
       const address = document.querySelector("#address").value;
       if (phone || address) {
-        const response = await fetch('http://localhost:3000/api/updateUser', {
+        const response = await fetch('https://bookify-l8ec.onrender.com/api/updateUser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (bio) formData.append("bio", bio);
       if (profileImage) formData.append("profileImage", profileImage);
 
-      const response = await fetch("http://localhost:3000/api/updateUser", {
+      const response = await fetch("https://bookify-l8ec.onrender.com/api/updateUser", {
         method: "POST",
         body: formData
       });

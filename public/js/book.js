@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const response = await fetch(`http://localhost:3000/api/findBook/${id}`);
+    const response = await fetch(`https://bookify-l8ec.onrender.com/api/findBook/${id}`);
     const item = await response.json();
     console.log(item);  // Debugging: Log the fetched item to check for bookImageUrl
 
