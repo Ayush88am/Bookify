@@ -30,9 +30,15 @@ const userSignUp=async (req,res)=>{
     if(result){
       const token = jwt.sign({ userId: result._id }, process.env.SECRET_KEY, {
         expiresIn: '1h'
-      })
-      res.cookie('token', token, { httpOnly: false, maxAge: 3600000, path: '/' });
- 
+    })
+      res.cookie('token', token, {
+        httpOnly: true,  
+        secure: false,   
+        maxAge: 3600000, 
+        path: '/',
+        sameSite: 'None' 
+      });
+
       return res.status(200).json({
         "result":"User Signup Successfully",
         "token":token
@@ -66,7 +72,13 @@ const userLogin=async(req,res)=>{
         }
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
-    res.cookie('token', token, { httpOnly: false, maxAge: 3600000, path: '/' });
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 3600000,
+      path: '/',
+      sameSite: 'None'
+    });
 
           return res.status(200).json({
             "result":"User Login Successfully",
