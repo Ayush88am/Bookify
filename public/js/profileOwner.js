@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[2] : null;
   }
 
-  const token = getCookie("token");
+  const token = getCookie("cookieToken");
   if (!token) {
     window.location.pathname = '/login';
   }

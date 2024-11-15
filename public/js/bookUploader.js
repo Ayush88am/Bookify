@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
   }
-  const token = getCookie("token");
+  const token = getCookie("cookieToken");
   if (!token) {
     window.location.pathname = '/login';
   }
