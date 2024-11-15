@@ -24,3 +24,4 @@ dist/
 # Miscellaneous
 public/css/*.map
 public/js/*.map
+.vercel
