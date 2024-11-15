@@ -25,13 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const getUserProfile = async () => {
     const id = getCookie('book_id');
     if (!id) {
-      console.log('No book ID cookie found');
       return;
     }
 
     const response = await fetch(`https://bookify-l8ec.onrender.com/api/findBook/${id}`);
     const item = await response.json();
-    console.log(item);  // Debugging: Log the fetched item to check for bookImageUrl
 
     const htmlOfProfile = `
       <div class="book-details-container">
@@ -62,11 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const profileImgElement = document.querySelector(".book-thumbnail");
     if (profileImgElement) {
-      console.log("Setting background image for:", item.bookImageUrl);  // Log image URL for debugging
       if (item.bookImageUrl) {
         profileImgElement.style.backgroundImage = `url('${item.bookImageUrl}')`;
       } else {
-        profileImgElement.style.backgroundImage = `url('default-image.jpg')`;  // Fallback image
+        profileImgElement.style.backgroundImage = `url('default-image.jpg')`; 
       }
       profileImgElement.style.backgroundSize = 'contain';
       profileImgElement.style.backgroundRepeat = 'no-repeat';
@@ -74,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       profileImgElement.style.backgroundPosition = 'center';
       profileImgElement.style.width = 'fit';
-      profileImgElement.style.height = '300px';  // Ensure height is set
+      profileImgElement.style.height = '300px'; 
     }
   };
 

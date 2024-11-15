@@ -206,7 +206,7 @@ body {
   border-radius: 10px;
   color: whitesmoke;
   font-weight: bold;
-  width: 400px; /* Default width */
+  width: 400px; 
   display: none;
   z-index: 2;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -214,8 +214,8 @@ body {
 
 @media (max-width: 480px) {
   .modal {
-    width: 90%; /* Make both modals smaller on small screens */
-    padding: 10px; /* Adjust padding for smaller screens */
+    width: 90%; 
+    padding: 10px; 
   }
 }
 
@@ -254,7 +254,6 @@ body {
   background-color: #f06595;
 }
 
-/* Close icon */
 .close-modal {
   position: absolute;
   top: 10px;
@@ -268,7 +267,6 @@ body {
   color: #ff6b6b;
 }
 
-/* Show the modal and background overlay when active */
 .modal.active, 
 .background-overlay.active {
   display: block;
@@ -278,7 +276,7 @@ body {
   top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white; /* Green background for success */
+  background-color: white; 
   color: black;
   padding: 10px 20px;
   border-radius: 5px;
@@ -293,7 +291,7 @@ body {
 }
 
 .notification.show {
-  top: 20px; /* Position it on the screen */
+  top: 20px; 
   opacity: 1;
 }
 .image-overlay {

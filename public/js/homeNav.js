@@ -116,7 +116,6 @@ window.addEventListener("DOMContentLoaded", () => {
             }
           });
         } catch (error) {
-          console.error("Error fetching book data:", error);
         }
       } else {
         try {
@@ -142,7 +141,6 @@ window.addEventListener("DOMContentLoaded", () => {
             }
           });
         } catch (error) {
-          console.error("Error fetching user profile data:", error);
         }
       }
     });

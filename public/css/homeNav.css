@@ -221,8 +221,7 @@ body {
     border-radius: 8px;
     scroll-behavior: auto;
 
-    /* Add scrollable properties */
-    max-height: 300px; /* Adjust this value as needed */
+    max-height: 300px; 
     overflow-y: auto;
 }
 

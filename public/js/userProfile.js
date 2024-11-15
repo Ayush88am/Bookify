@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to get a cookie by name
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.pathname = '/login';
   }
 
-  // Go back button with cookie clearance
   function clearCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
@@ -20,11 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.pathname = "/home";
   });
 
-  // Fetch and populate user profile
   const getUserProfile = async () => {
     const id = getCookie('user_id');
     if (!id) {
-      console.log('No user ID cookie found');
       return;
     }
 
@@ -63,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".contact-details").innerHTML = htmlOfProfileAdditional;
 
-    // Image enlargement feature
     profileImgElement.addEventListener("click", () => {
       const imageUrl = item.userProfilePicture;
       showImageOverlay(imageUrl);
@@ -72,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getUserProfile();
 
-  // Function to show image overlay
   function showImageOverlay(imageUrl) {
     let overlay = document.querySelector(".image-overlay");
 
@@ -84,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <img class="overlay-image" src="${imageUrl}" alt="Enlarged View">`;
       document.body.appendChild(overlay);
 
-      // Close overlay when clicking the close button or outside the image
       overlay.querySelector("#close-image-now").addEventListener("click", hideOverlay);
       overlay.addEventListener("click", (event) => {
         if (event.target === overlay) hideOverlay();
@@ -95,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.style.display = "flex"; // Show the overlay
   }
 
-  // Function to hide the overlay
   function hideOverlay() {
     const overlay = document.querySelector(".image-overlay");
     if (overlay) {

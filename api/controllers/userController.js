@@ -33,7 +33,7 @@ const userSignUp=async (req,res)=>{
       })
       res.cookie('token', token, {
         httpOnly: false,
-        secure: process.env.NODE_ENV === 'production', // Secure only in production
+        secure: process.env.NODE_ENV === 'production',
         sameSite: 'None',
         maxAge: 24 * 60 * 60 * 1000,
       });
@@ -74,7 +74,7 @@ const userLogin=async(req,res)=>{
         })
     res.cookie('token', token, {
       httpOnly: false,
-      secure: process.env.NODE_ENV === 'production', // Secure only in production
+      secure: process.env.NODE_ENV === 'production', 
       sameSite: 'None',
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -125,10 +125,9 @@ const searchUserProfile = async (req, res) => {
       return res.status(400).json({ result: "Please provide a username" });
     }
 
-    // Split the query into individual words
     const queryParts = query.split(" ");
 
-    // Build a dynamic query to search each part of the name in first, middle, or last name
+    
     const searchConditions = queryParts.map(part => ({
       $or: [
         { firstname: { $regex: part, $options: 'i' } },
@@ -216,7 +215,6 @@ const updateUser = async (req, res) => {
       return res.status(404).json({ result: "User Not Found" });
     }
 
-    // Handle profile picture upload separately
     uploadImage(req, res, async (err) => {
       if (err) {
         return res.status(400).json({ message: err.message,
@@ -229,9 +227,7 @@ const updateUser = async (req, res) => {
         user.userProfilePicture = profileLink;
       }
 
-      // Update other fields if they are present
       const { username, phone, address, bio } = req.body;
-      console.log(req.body);
       if (username) {
         const arry = username.split(" ");
         user.firstname=arry[0];

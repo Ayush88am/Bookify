@@ -90,7 +90,7 @@ form input:focus {
   top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white; /* Green background for success */
+  background-color: white; 
   color: black;
   padding: 10px 20px;
   border-radius: 5px;
@@ -105,6 +105,6 @@ form input:focus {
 }
 
 .notification.show {
-  top: 20px; /* Position it on the screen */
+  top: 20px; 
   opacity: 1;
 }

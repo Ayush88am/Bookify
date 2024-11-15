@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     backgroundOverlay.classList.remove('active');
   }
 
-  // Function to show image overlay
   function showImageOverlay(imageUrl) {
     let overlay = document.querySelector(".image-overlay");
 
@@ -45,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.style.display = "flex"; // Show the overlay
   }
 
-  // Function to hide the overlay
   function hideOverlay() {
     const overlay = document.querySelector(".image-overlay");
     if (overlay) {
@@ -53,14 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Fetch user profile data and populate profile
   const getUserProfile = async () => {
     try {
       const response = await fetch('https://bookify-l8ec.onrender.com/api/userProfileOwner');
       const user = await response.json();
 
       if (response.ok) {
-        // Populate Profile Details
         const profileDetailsHTML = `
           <div class="profile-img"></div>
           <div class="profile-info">
@@ -71,20 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.querySelector(".profile-details").innerHTML = profileDetailsHTML;
 
-        // Set Profile Image
         const profileImg = document.querySelector(".profile-img");
         if (user.userProfilePicture) {
           profileImg.style.backgroundImage = `url('${user.userProfilePicture}')`;
           profileImg.style.backgroundSize = 'cover';
           profileImg.style.backgroundPosition = 'center';
 
-          // Add image click event to show overlay
           profileImg.addEventListener("click", () => {
             showImageOverlay(user.userProfilePicture);
           });
         }
 
-        // Populate Contact Information
         const contactInfoHTML = `
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
@@ -107,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.querySelector(".contact-details").innerHTML = contactInfoHTML;
 
-        // Re-assign event listeners to dynamically added buttons
         document.querySelector('.edit-button.open-modal-btn').addEventListener('click', () => {
           modal.classList.add('active');
           backgroundOverlay.classList.add('active');
@@ -120,10 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
           backgroundOverlay.classList.add('active');
         });
       } else {
-        console.error('Error fetching profile data:', user.message);
       }
     } catch (error) {
-      console.error('Error fetching user profile:', error);
     }
   };
 
@@ -132,13 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.pathname = "/home";
   });
 
-  // Close Modals when clicking on the background overlay or close buttons
   document.querySelectorAll('.close-modal').forEach(btn => {
     btn.addEventListener('click', closeModals);
   });
   backgroundOverlay.addEventListener('click', closeModals);
 
-  // "Go Back" button clears user session or cookies (if needed)
   document.querySelector(".go-back").addEventListener('click', () => {
     clearCookie('user_id');
   });

@@ -200,7 +200,7 @@ window.addEventListener("load", () => {
         window.location.pathname="/user";
       });
     } else {
-      console.warn("Element with .tras-container not found");
+      //error
     }
   };
   const realBooksOnly = async () => {
@@ -219,12 +219,11 @@ window.addEventListener("load", () => {
             if (!response.ok) throw new Error(`Failed to delete book with ID ${item._id}`);
 
             const result = await response.json();
-            console.log(`Deleted book with ID ${item._id}:`, result);
           } else {
-            console.error("Item ID is missing, cannot delete:", item);
+            //error
           }
         } catch (error) {
-          console.error("Error:", error.message);
+          //error
         }
       }
     }
