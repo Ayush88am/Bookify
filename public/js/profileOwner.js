@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[2] : null;
   }
 
-  const token = getCookie("cookieToken");
+  const token = getCookie("token");
   if (!token) {
     window.location.pathname = '/login';
   }
@@ -142,6 +142,61 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".go-back").addEventListener('click', () => {
     clearCookie('user_id');
   });
+  const updateUser = () => {
+    document.querySelector("#add-phone").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const phone = document.querySelector("#phone").value;
+      const address = document.querySelector("#address").value;
+      if (phone || address) {
+        const response = await fetch('http://localhost:3000/api/updateUser', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            phone: phone || null,
+            address: address || null
+          })
+        })
+        const data = await response.json();
+        if (response.ok) {
+          document.location.pathname = '/yourProfile';
+        } else {
+          showNotification("red", data.message || data.error || data.result)
+
+        }
+      }
+    })
+  }
+  updateUser();
+  const updateProfile = () => {
+    document.querySelector("#edit-profile-btn").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const username = document.querySelector("#username").value;
+      const bio = document.querySelector("#bio").value;
+      const profileImage = document.querySelector("#image-upload").files[0];
+
+      const formData = new FormData();
+      if (username) formData.append("username", username);
+      if (bio) formData.append("bio", bio);
+      if (profileImage) formData.append("profileImage", profileImage);
+
+      const response = await fetch("http://localhost:3000/api/updateUser", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        showNotification("red", data.message || data.error || data.result)
+      }
+      else {
+        window.location.pathname = '/yourProfile';
+      }
+    });
+  }
+
+  updateProfile();
 });
 
 // Optional helper function to clear cookies (placeholder)

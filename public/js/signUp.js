@@ -4,14 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
   }
-  const token = getCookie("cookieToken");
+  const token = getCookie("token");
   if (token) {
     window.location.pathname = '/home';
 
   }
-  const tokenSaved = (token) => {
-    document.cookie = `cookieToken=${token}; path=/;`;
-  };
+
   function showNotification(color, message) {
     const notification = document.getElementById("notification");
     const notificationMessage = document.getElementById("notification-message");
@@ -55,7 +53,6 @@ const userRegister = ()=>{
       showNotification("red", data.message || data.error || data.result)
     }
     else {
-      tokenSaved(data.token);
       showNotification("green", data.message || data.error || data.result)
       setTimeout(() => {
         window.location.pathname = '/home';

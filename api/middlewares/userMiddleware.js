@@ -29,7 +29,7 @@ catch(error){
 }
 const cookieCheckerMiddleWare=(req,res,next)=>{
   try{
-    const isCookie=req.cookies.cookieToken;
+    const isCookie=req.cookies.token;
     if(!isCookie){
       return res.status(401).json({message:"Unauthorized"})
       }

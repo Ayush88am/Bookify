@@ -34,9 +34,8 @@ mongoose.connect(process.env.MONGODB_URI);
 app.use(cookieParser());
 app.use(cors({
       origin: 'https://bookify-l8ec.onrender.com',  
-      credentials: true
+      credentials: true  
 }));
-
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 

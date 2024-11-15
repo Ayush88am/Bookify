@@ -30,8 +30,14 @@ const userSignUp=async (req,res)=>{
     if(result){
       const token = jwt.sign({ userId: result._id }, process.env.SECRET_KEY, {
         expiresIn: '1h'
-    })
-      // Set the token cookie with secure settings in production
+      })
+      res.cookie('token', token, {
+        httpOnly: false,
+        sameSite: 'None', // Cross-site cookies
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      });
+
+ 
       return res.status(200).json({
         "result":"User Signup Successfully",
         "token":token
@@ -65,9 +71,11 @@ const userLogin=async(req,res)=>{
         }
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
-    // Set the token cookie with secure settings in production
-
-
+    res.cookie('token', token, {
+      httpOnly: false,
+      sameSite: 'None', // Cross-site cookies
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
           return res.status(200).json({
             "result":"User Login Successfully",
             "token":token
@@ -82,7 +90,7 @@ const userLogin=async(req,res)=>{
 }
 const getUser=async(req,res)=>{
 
-  const token = req.cookies.cookieToken;
+  const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ result: "Please login to access this resource" });
   }
@@ -165,7 +173,7 @@ catch(err){
  const userLogout=async(req,res)=>{
   try{
    
-    res.clearCookie('cookieToken');
+    res.clearCookie('token');
     res.json({result:"Logged Out Successfully"})
     }
     catch(err){
@@ -188,7 +196,7 @@ const getUsers = async (req, res) => {
   }
 }
 const updateUser = async (req, res) => {
-  const token = req.cookies.cookieToken;
+  const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ result: "Please login to access this resource" });
   }

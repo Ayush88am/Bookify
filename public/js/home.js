@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
   }
-  const token = getCookie("cookieToken");
+  const token = getCookie("token");
   if (!token) {
     window.location.pathname = '/login';
   }
