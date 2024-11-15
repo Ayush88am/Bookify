@@ -32,12 +32,10 @@ const userSignUp=async (req,res)=>{
         expiresIn: '1h'
     })
       res.cookie('token', token, {
-        httpOnly: true,  
-        secure: false,   
-        maxAge: 3600000, 
-        path: '/',
-        sameSite: 'None' 
+        path: '/',        // Make the cookie accessible across all routes
+        sameSite: 'None'  // Allow cross-origin requests to send cookies
       });
+
 
       return res.status(200).json({
         "result":"User Signup Successfully",
@@ -74,7 +72,7 @@ const userLogin=async(req,res)=>{
         })
     res.cookie('token', token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       maxAge: 3600000,
       path: '/',
       sameSite: 'None'

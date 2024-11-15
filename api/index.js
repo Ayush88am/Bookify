@@ -33,8 +33,8 @@ mongoose.connect(process.env.MONGODB_URI);
 */
 app.use(cookieParser());
 app.use(cors({
-      origin: 'https://bookify-l8ec.onrender.com',  // Allow this origin
-      credentials: true  // Allow credentials (cookies, authorization headers)
+      origin: 'https://bookify-l8ec.onrender.com',  
+      credentials: true
 }));
 
 app.use(express.json());
