@@ -57,7 +57,7 @@ app.get("/user", (req, res) => {
       res.sendFile(path.join(__dirname, "../public", "userProfile.html"))
 }) 
 app.get("/book", (req, res) => {
-      res.sendFile(path.join(__dirname, "../public", "book.html"))
+      res.sendFile(path.join(__dirname, "../public", "Book.html"))
 })
 app.get("/yourProfile", (req, res) => {
       res.sendFile(path.join(__dirname, "../public", "profileOwner.html"))
