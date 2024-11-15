@@ -32,15 +32,6 @@ const userSignUp=async (req,res)=>{
         expiresIn: '1h'
     })
       // Set the token cookie with secure settings in production
-      if (process.env.NODE_ENV === 'production') {
-        res.cookie('token', token, { httpOnly: false, sameSite: 'none', secure: true })
-      } else {
-        res.cookie('token', token, { httpOnly: false })
-      }
-
-
-
-
       return res.status(200).json({
         "result":"User Signup Successfully",
         "token":token
@@ -75,11 +66,6 @@ const userLogin=async(req,res)=>{
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn:'1h'
         })
     // Set the token cookie with secure settings in production
-    if (process.env.NODE_ENV === 'production') {
-        res.cookie('token', token, { httpOnly: false, sameSite: 'none', secure: true })
-    } else {
-        res.cookie('token', token, { httpOnly: false })
-    }
 
 
           return res.status(200).json({

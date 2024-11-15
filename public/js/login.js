@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     window.location.pathname = '/home';
 
   }
-
+  const tokenSaved = (token) => {
+    document.cookie = `token=${id}; path=/;`;
+  };
 function showNotification(color,message) {
   const notification = document.getElementById("notification");
   const notificationMessage = document.getElementById("notification-message");
@@ -53,6 +55,7 @@ const userRegister = () => {
       showNotification("red", data.message || data.error || data.result)
     }
     else{
+      tokenSaved(data.token);
       showNotification("green", data.message || data.error || data.result)
       setTimeout(() => {
         window.location.pathname='/home';
