@@ -165,7 +165,7 @@ catch(err){
  const userLogout=async(req,res)=>{
   try{
    
-    res.clearCookie('token');
+    res.clearCookie('cookieToken');
     res.json({result:"Logged Out Successfully"})
     }
     catch(err){
