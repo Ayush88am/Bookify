@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
   const tokenSaved = (token) => {
-    document.cookie = `token=${id}; path=/;`;
+    document.cookie = `token=${token}; path=/;`;
   };
   function showNotification(color, message) {
     const notification = document.getElementById("notification");
