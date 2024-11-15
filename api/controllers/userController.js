@@ -82,7 +82,7 @@ const userLogin=async(req,res)=>{
 }
 const getUser=async(req,res)=>{
 
-  const token = req.cookies.token;
+  const token = req.cookies.cookieToken;
   if (!token) {
     return res.status(401).json({ result: "Please login to access this resource" });
   }
@@ -188,7 +188,7 @@ const getUsers = async (req, res) => {
   }
 }
 const updateUser = async (req, res) => {
-  const token = req.cookies.token;
+  const token = req.cookies.cookieToken;
   if (!token) {
     return res.status(401).json({ result: "Please login to access this resource" });
   }
