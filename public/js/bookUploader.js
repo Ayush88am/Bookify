@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/uploadAnBook", {
+        const response = await fetch("https://bookify-l8ec.onrender.com/api/uploadAnBook", {
           method: "POST",
           body: JSON.stringify(formObj),
           headers: {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        const response = await fetch("http://localhost:3000/api/uploadBookPdf", {
+        const response = await fetch("https://bookify-l8ec.onrender.com/api/uploadBookPdf", {
           method: "POST",
           body: formData,
           credentials: "include",
